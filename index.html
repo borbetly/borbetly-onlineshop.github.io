@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ValTrade | Online Shop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <aside class="logo-container">
+            <aside class="logo">VT</aside>
+            <h1>ValTrade</h1>
+        </aside>
+        <nav class="header-nav">
+            <a href="login.html" class="login-btn">Login</a>
+            <a href="sign-up.html">Sign Up</a>
+            <a href="profile.html" class="profile-btn">P</a>
+        </nav>
+    </header>
+    <aside class="container">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main id="main-content">
+            <section id="home-section">
+                <h2>Featured Products</h2>
+                <aside class="product-grid">
+                    <aside class="product-card">
+                        <aside class="product-image">
+                            <img src="assets/241px-Classic_shimmer_VALORANT.png" alt="750 VP" width="120" height="120">
+                        </aside>
+                        <h3>Valorant Points — 750 VP</h3>
+                    </aside>
+                    <aside class="product-card">
+                        <aside class="product-image">
+                            <img src="assets/valorant-forsaken-vandal-skin.png" alt="1650 VP" width="150" height="150">
+                        </aside>
+                        <h3>Valorant Points — 1650 VP</h3>
+                    </aside>
+                    <aside class="product-card">
+                        <aside class="product-image">
+                            <img src="assets/241px-Melee_reaver_2.0_karambit_VALORANT.png" alt="2500 VP" width="120" height="120">
+                        </aside>
+                        <h3>Valorant Points — 2500 VP</h3>
+                    </aside>
+                </aside>
+            </section>
+        </main>
+    </aside>
+    <footer>
+        <p>&copy; 2026 ValTrade. All rights reserved.</p>
+        <p>Contact: support@valtrade.com | +123 456 789</p>
+    </footer>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            await loadProducts();
+        });
+
+        async function loadProducts() {
+            await new Promise(resolve => setTimeout(resolve, 300));
+            
+            console.log('Products loaded successfully');
+        }
+    </script>
+
+</body>
+</html>

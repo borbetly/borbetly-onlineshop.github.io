@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - ValTrade</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <aside class="logo-container">
+            <aside class="logo">VT</aside>
+            <h1>ValTrade</h1>
+        </aside>
+        <nav class="header-nav">
+            <a href="index.html">Home</a>
+            <a href="profile.html" class="profile-btn" id="profile-btn">P</a>
+        </nav>
+    </header>
+    <main>
+        <section class="profile-section">
+            <div class="profile-header">
+                <div class="profile-avatar" id="profile-initials">RP</div>
+                <h2 class="profile-name" id="profile-full-name">User Name</h2>
+            </div>
+            <div class="profile-details">
+                <div class="detail-row">
+                    <span class="detail-label">First Name</span>
+                    <span class="detail-value" id="profile-first-name">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Last Name</span>
+                    <span class="detail-value" id="profile-last-name">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Email Address</span>
+                    <span class="detail-value" id="profile-email">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Mobile Number</span>
+                    <span class="detail-value" id="profile-mobile">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Home Address</span>
+                    <span class="detail-value" id="profile-address">-</span>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+            
+            if (userData.firstName) {
+                document.getElementById('profile-first-name').textContent = userData.firstName;
+                document.getElementById('profile-last-name').textContent = userData.lastName;
+                document.getElementById('profile-email').textContent = userData.email;
+                document.getElementById('profile-mobile').textContent = userData.mobile || '-';
+                document.getElementById('profile-address').textContent = userData.address || '-';
+                
+                const fullName = userData.firstName + ' ' + userData.lastName;
+                document.getElementById('profile-full-name').textContent = fullName;
+                
+                const initials = (userData.firstName.charAt(0) + userData.lastName.charAt(0)).toUpperCase();
+                document.getElementById('profile-initials').textContent = initials;
+            } else {
+                alert('No profile data found. Please sign up first.');
+                window.location.href = 'sign-up.html';
+            }
+        });
+    </script>
+
+</body>
+</html>
