@@ -6,30 +6,47 @@
     <title>Login - ValTrade</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <header>
-        <aside class="logo-container">
-            <aside class="logo">VT</aside>
-            <h1>ValTrade</h1>
-        </aside>
-    </header>
-    <main>
-        <section id="login-section">
-            <h2>Login</h2>
-            <form id="login-form">
-                <aside class="form-group">
-                    <label for="email">Email Address:</label>
-                    <input type="email" id="email" name="email" required>
-                </aside>
-                <aside class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                </aside>
-                <button type="submit">Login</button>
+<body class="login-page">
+    <div class="simple-login-container">
+        <div class="simple-login-card">
+            <div class="simple-logo-container">
+                <aside class="simple-logo">VT</aside>
+                <h1 class="simple-brand">ValTrade</h1>
+            </div>
+            <h2 class="simple-heading">Sign In</h2>
+            <form id="login-form" class="simple-form">
+                <div class="input-wrapper">
+                    <input type="email" id="email" name="email" placeholder="Email Address" required>
+                </div>
+                <div class="input-wrapper">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="simple-button">Login</button>
+                <a href="#" class="forgot-password">Forgot Password?</a>
+                <p class="simple-link">Don't have an account? <a href="sign-up.html">Sign up</a></p>
             </form>
-            <p>Don't have an account? <a href="sign-up.html">Sign up</a></p>
-            <p><a href="index.html">Back to Home</a></p>
-        </section>
-    </main>
+        </div>
+    </div>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+            
+            if (userData.email && userData.email === email) {
+                localStorage.setItem('isLoggedIn', 'true');
+                
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                alert('Login successful! Welcome back.');
+                window.location.href = 'index.html';
+            } else {
+                alert('Invalid email or password. Please sign up first.');
+            }
+        });
+    </script>
+
 </body>
 </html>
