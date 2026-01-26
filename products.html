@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog - ValTrade</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <aside class="logo-container">
+            <aside class="logo">VT</aside>
+            <h1>ValTrade</h1>
+        </aside>
+        <nav class="header-nav">
+            <a href="login.html" class="login-btn">Login</a>
+            <a href="sign-up.html">Sign Up</a>
+            <a href="profile.html" class="profile-btn">P</a>
+        </nav>
+    </header>
+    <aside class="container">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="catalog.html">Products</a></li>
+                    <li><a href="cart.html">Shopping Cart</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <h2>Product Catalog</h2>
+
+            <aside class="filter-section">
+                <h3>Filter by Category</h3>
+                <aside class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">All Products</button>
+                    <button class="filter-btn" data-category="vp">VP Bundles</button>
+                    <button class="filter-btn" data-category="skins">Weapon Skins</button>
+                    <button class="filter-btn" data-category="bundles">Premium Bundles</button>
+                </aside>
+            </aside>
+
+            <aside class="catalog-grid" id="catalog-grid">
+            </aside>
+        </main>
+    </aside>
+    <footer>
+        <p>&copy; 2026 ValTrade. All rights reserved.</p>
+        <p>Contact: support@valtrade.com | +123 456 789</p>
+    </footer>
+
+    <script>
+        const products = [
+            {
+                id: 1,
+                name: "Valorant Points - 475 VP",
+                price: 4.99,
+                category: "vp",
+                image: "",
+                description: "Starter bundle"
+            },
+            {
+                id: 2,
+                name: "Valorant Points - 750 VP",
+                price: 7.99,
+                category: "vp",
+                image: "",
+                description: "Great value VP bundle"
+            },
+            {
+                id: 3,
+                name: "Valorant Points - 1650 VP",
+                price: 14.99,
+                category: "vp",
+                image: "",
+                description: "Most popular VP bundle"
+            },
+            {
+                id: 4,
+                name: "Valorant Points - 2500 VP",
+                price: 24.99,
+                category: "vp",
+                image: "",
+                description: "Best value"
+            },
+            {
+                id: 5,
+                name: "Valorant Points - 5350 VP",
+                price: 49.99,
+                category: "vp",
+                image: "",
+                description: "Premium VP bundle with bonus points"
+            },
+            {
+                id: 6,
+                name: "Reaver Vandal Skin",
+                price: 19.99,
+                category: "skins",
+                image: "",
+                description: "Reaver Vandal"
+            },
+            {
+                id: 7,
+                name: "Forsaken Vandal Skin",
+                price: 21.99,
+                category: "skins",
+                image: "",
+                description: "Forsaken Vandal skin"
+            },
+            {
+                id: 8,
+                name: "Reaver Karambit",
+                price: 39.99,
+                category: "skins",
+                image: "",
+                description: "Premium melee weapon skin"
+            },
+            {
+                id: 9,
+                name: "Champions Bundle 2025",
+                price: 79.99,
+                category: "bundles",
+                image: "",
+                description: "Complete Champions collection"
+            },
+            {
+                id: 10,
+                name: "Battle Pass",
+                price: 29.99,
+                category: "bundles",
+                image: "",
+                description: "Battle pass"
+            }
+        ];
+
+        let currentCategory = 'all';
+
+        document.addEventListener('DOMContentLoaded', async function () {
+            await loadProducts();
+            setupFilters();
+        });
+
+        async function loadProducts() {
+            await new Promise(resolve => setTimeout(resolve, 300));
+
+            const grid = document.getElementById('catalog-grid');
+            grid.innerHTML = '';
+
+            const filteredProducts = currentCategory === 'all'
+                ? products
+                : products.filter(p => p.category === currentCategory);
+
+            filteredProducts.forEach(product => {
+                const card = createProductCard(product);
+                grid.appendChild(card);
+            });
+        }
+
+        function createProductCard(product) {
+            const card = document.createElement('aside');
+            card.className = 'catalog-card';
+
+            card.innerHTML = `
+<aside class="catalog-image">
+<img src="${product.image}" alt="${product.name}" width="150" height="150">
+</aside>
+<h3>${product.name}</h3>
+<p class="catalog-description">${product.description}</p>
+<p class="catalog-price">$${product.price.toFixed(2)}</p>
+<button class="add-to-cart-btn" data-id="${product.id}">Add to Cart</button>
+`;
+
+            const btn = card.querySelector('.add-to-cart-btn');
+            btn.addEventListener('click', async () => await addToCart(product));
+
+            return card;
+        }
+
+        function setupFilters() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', async function () {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentCategory = this.dataset.category;
+                    await loadProducts();
+                });
+            });
+        }
+
+        async function addToCart(product) {
+            await new Promise(resolve => setTimeout(resolve, 200));
+
+            let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+            const existingItem = cart.find(item => item.id === product.id);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert(`${product.name} added to cart!`);
+        }
+    </script>
+</body>
+
+</html>
