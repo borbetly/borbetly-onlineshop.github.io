@@ -44,7 +44,7 @@ header h1 {
 }
 
 .header-nav a {
-    background: #27ae60;
+    background: #41586e;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -54,11 +54,11 @@ header h1 {
 }
 
 .header-nav .login-btn {
-    background: #16a085;
+    background: #2c3e50;
 }
 
 .header-nav a:hover {
-    background: #219150;
+    background: #222e3a;
 }
 
 .header-nav .profile-btn {
@@ -390,4 +390,113 @@ body.signup-page {
     font-weight: 500;
     text-align: right;
     flex: 1;
+}
+
+.catalog-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+gap: 25px;
+margin-top: 20px;
+}
+
+.catalog-card {
+border: 1px solid #ddd;
+padding: 20px;
+text-align: center;
+border-radius: 8px;
+background: white;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.catalog-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.catalog-image {
+padding: 10px 0;
+min-height: 150px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.catalog-image img {
+max-width: 100%;
+height: auto;
+}
+
+.catalog-card h3 {
+color: #2c3e50;
+font-size: 18px;
+margin: 15px 0 10px;
+}
+
+.catalog-price {
+font-size: 24px;
+font-weight: bold;
+color: #27ae60;
+margin: 10px 0;
+}
+
+.catalog-description {
+color: #7F8C8D;
+font-size: 14px;
+margin: 10px 0;
+line-height: 1.4;
+}
+
+.add-to-cart-btn {
+background: #27ae60;
+color: white;
+border: none;
+padding: 12px 24px;
+cursor: pointer;
+border-radius: 6px;
+font-size: 14px;
+font-weight: 600;
+width: 100%;
+margin-top: 10px;
+transition: background 0.3s;
+}
+
+.add-to-cart-btn:hover {
+background: #219150;
+}
+
+.filter-section {
+background: white;
+padding: 20px;
+border-radius: 8px;
+margin-bottom: 20px;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filter-section h3 {
+margin: 0 0 15px 0;
+color: #2c3e50;
+}
+
+.filter-buttons {
+display: flex;
+gap: 10px;
+flex-wrap: wrap;
+}
+
+.filter-btn {
+background: #ecf0f1;
+color: #2c3e50;
+border: none;
+padding: 8px 16px;
+cursor: pointer;
+border-radius: 6px;
+font-size: 14px;
+transition: background 0.3s, color 0.3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+background: #27ae60;
+color: white;
 }
