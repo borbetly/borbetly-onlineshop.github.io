@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - ValTrade</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="app.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
     <header>
@@ -45,30 +47,8 @@
                     <span class="detail-value" id="profile-address">-</span>
                 </div>
             </div>
+            <button class="back-home-btn" onclick="window.location.href='index.html'">Back to Home</button>
         </section>
     </main>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-            
-            if (userData.firstName) {
-                document.getElementById('profile-first-name').textContent = userData.firstName;
-                document.getElementById('profile-last-name').textContent = userData.lastName;
-                document.getElementById('profile-email').textContent = userData.email;
-                document.getElementById('profile-mobile').textContent = userData.mobile || '-';
-                document.getElementById('profile-address').textContent = userData.address || '-';
-                
-                const fullName = userData.firstName + ' ' + userData.lastName;
-                document.getElementById('profile-full-name').textContent = fullName;
-                
-                const initials = (userData.firstName.charAt(0) + userData.lastName.charAt(0)).toUpperCase();
-                document.getElementById('profile-initials').textContent = initials;
-            } else {
-                alert('No profile data found. Please sign up first.');
-                window.location.href = 'sign-up.html';
-            }
-        });
-    </script>
-
 </body>
 </html>
