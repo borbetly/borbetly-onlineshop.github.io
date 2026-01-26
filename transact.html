@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transaction | ValTrade</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="app.js"></script>
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -14,9 +16,6 @@
             <h1>ValTrade</h1>
         </aside>
         <nav class="header-nav">
-            <a href="login.html" class="login-btn">Login</a>
-            <a href="sign-up.html">Sign Up</a>
-            <a href="profile.html" class="profile-btn">P</a>
         </nav>
     </header>
 
@@ -27,7 +26,6 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="products.html">Products</a></li>
                     <li><a href="payment.html">To Pay</a></li>
-                    <li><a href="cart.html">Cart</a></li>
                     <li><a href="transact.html">Transaction</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
@@ -36,7 +34,93 @@
         </aside>
 
         <main id="main-content">
-            
+            <div class="receipt-container" id="receipt-container" style="display: none;">
+                <div class="receipt-header">
+                    <h2>Transaction Confirmation</h2>
+                    <p class="receipt-status success">✓ Payment Successful</p>
+                </div>
+
+                <div class="receipt-content">
+                    <div class="e-receipt">
+                        <div class="receipt-top">
+                            <div class="receipt-logo">VT</div>
+                            <h3>ValTrade</h3>
+                            <p class="receipt-tagline">Premium Gaming Products</p>
+                        </div>
+
+                        <hr class="receipt-divider">
+
+                        <div class="receipt-section">
+                            <h4>Order Details</h4>
+                            <div class="receipt-details">
+                                <div class="detail-row">
+                                    <span>Order ID:</span>
+                                    <span class="detail-value" id="order-id">#VT-2026-001</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span>Date:</span>
+                                    <span class="detail-value" id="transaction-date">January 26, 2026</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span>Time:</span>
+                                    <span class="detail-value" id="transaction-time">14:32:45</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="receipt-divider">
+
+                        <div class="receipt-section">
+                            <h4>Purchased Items</h4>
+                            <table class="receipt-items">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Qty</th>
+                                        <th>Price</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="receipt-items-body">
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <hr class="receipt-divider">
+
+                        <div class="receipt-section">
+                            <div class="receipt-summary">
+                                <div class="summary-row">
+                                    <span>Subtotal:</span>
+                                    <span id="subtotal">₱0.00</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span>Shipping:</span>
+                                    <span id="shipping">₱0.00</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span>Tax:</span>
+                                    <span id="tax">₱0.00</span>
+                                </div>
+                                <div class="summary-row total">
+                                    <span>Total Amount:</span>
+                                    <span id="total-amount">₱0.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="receipt-footer">
+                            <p>Thank you for your purchase!</p>
+                        </div>
+                    </div>
+
+                    <div class="receipt-actions">
+                        <button class="btn-primary" onclick="printReceipt()">Print Receipt</button>
+                        <button class="btn-secondary" onclick="downloadReceipt()">Download PDF</button>
+                        <button class="btn-secondary" onclick="goToHome()">Continue Shopping</button>
+                    </div>
+                </div>
+            </div>
         </main>
     </aside>
 
