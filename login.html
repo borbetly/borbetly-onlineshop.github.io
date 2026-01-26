@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - ValTrade</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="app.js"></script>
+    <script src="script.js"></script>
 </head>
 <body class="login-page">
     <div class="simple-login-container">
@@ -27,26 +29,5 @@
             </form>
         </div>
     </div>
-    <script>
-        document.getElementById('login-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-            
-            if (userData.email && userData.email === email) {
-                localStorage.setItem('isLoggedIn', 'true');
-                
-                await new Promise(resolve => setTimeout(resolve, 500));
-                
-                alert('Login successful! Welcome back.');
-                window.location.href = 'index.html';
-            } else {
-                alert('Invalid email or password. Please sign up first.');
-            }
-        });
-    </script>
-
 </body>
 </html>
