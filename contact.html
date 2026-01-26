@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Contact Us | ValTrade</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="app.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
     <header>
@@ -25,7 +27,6 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="products.html">Products</a></li>
                     <li><a href="payment.html">To Pay</a></li>
-                    <li><a href="cart.html">Cart</a></li>
                     <li><a href="transact.html">Transaction</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
@@ -53,17 +54,5 @@
         <p>&copy; 2026 ValTrade. All rights reserved.</p>
     </footer>
 
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const message = document.getElementById('message').value;
-            
-            await new Promise(resolve => setTimeout(resolve, 500));
-            
-            alert('Thank you, ' + name + '! Your message has been sent successfully.');
-            this.reset();
-        });
-    </script>
 </body>
 </html>
